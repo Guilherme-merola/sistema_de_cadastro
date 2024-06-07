@@ -46,7 +46,7 @@ class Main(tk.Tk):
         self.tela_atual.pack(fill="both", expand=True)
         self.tela_atual.lift()
 
-    def logar(self: object, login: str, senha: str) -> Pessoa | object:
+    def logar(self: object, login: str, senha: str) -> object:
         """
         Método responsável por executar o método logar da classe Pessoa e então instanciar um objeto
         desta classe.
@@ -56,10 +56,12 @@ class Main(tk.Tk):
         tais campos. 
         """
         if login and senha: 
-            self.trocar_tela("tela_final")
-            return Pessoa.logar(login, senha)
+            if Pessoa.logar(login, senha):
+                return self.trocar_tela("tela_final")
+            else:
+                return self.exibir_mensagem("Login Inválido")
         else:
-            return self.exibir_mensagem("Login Inválido")
+            return self.exibir_mensagem("Preencha os campos")
             
     def cadastrar(self: object, login: str, senha: str, email: str) -> object:
         """
