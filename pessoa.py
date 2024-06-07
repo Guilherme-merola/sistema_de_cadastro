@@ -93,7 +93,7 @@ Email: {self.email}"""
         for indice, (login, senha) in enumerate(zip(cadastros["Login"], cadastros["Senha"])):
             if login == login_fornecido and Pessoa.verificar_senha(senha_real=senha, senha_informada=senha_fornecida):
                 return Pessoa.instanciar_objeto(indice)
-        return None
+        return
     
     @staticmethod
     def buscar_cadastro_codigo(codigo_busca: int) -> None | object:
@@ -106,7 +106,7 @@ Email: {self.email}"""
         for indice, codigo in enumerate(cadastros["Codigo"]):
             if codigo == codigo_busca:
                 return Pessoa.instanciar_objeto(indice)
-        return None
+        return
 
     @staticmethod
     def buscar_cadastro_login(login_busca: str) -> None | object:
@@ -119,7 +119,7 @@ Email: {self.email}"""
         for indice, login in enumerate(cadastros["Login"]):
             if login == login_busca:
                 return Pessoa.instanciar_objeto(indice)
-        return None
+        return
 
     @staticmethod
     def instanciar_objeto(indice: int) -> object:
